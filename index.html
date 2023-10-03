@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESCOLHENDO a MELHOR LINGUAGEM de PROGRAMAÇÃO</title>
+</head>
+<body>
+
+    <button onclick="selectLanguage()">Qual linguagem de programação tu deve usar?</button>
+    <p id="language"></p>
+
+    <script>
+        const languages = ["kotlin"];
+        
+        function selectLanguage() {
+            const randomIndex = Math.floor(Math.random() * languages.length);
+            document.getElementById("language").innerText = languages[randomIndex];
+        }
+    </script>
+</body>
+</html>
