@@ -8,12 +8,13 @@
 
     <style>        
         body {
+            overflow: hidden;
             background-color: #0D1117;
             color: #FFFFFF;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
             margin: 0;
             padding: 0;
-            font-size: 2.5rem;            
+            font-size: 48pt;            
             word-wrap: break-word;
             display: flex;
             flex-direction: column;
@@ -21,40 +22,19 @@
             justify-content: center;
             height: 100vh;
         }
-    
-        @media only screen and (max-width: 1024px) {
-            body {
-                font-size: 1.5rem;
-            }
-            button {
-                background-color: #0d1117;
-                border: 1px solid #30363d;
-                border-radius: 6px;        
-                color: #FFFFFF;       
-                font-size: 0.7rem;     
-                border-radius: 8px;
-                order: 2;
-            }
-            
-            button:hover {
-                background-color: #30363d;
-                cursor: pointer;
-            }
-        } 
-
+        
         button {
-            background-color: #0d1117;
-            border: 1px solid #30363d;
+            background-color: #28a745;
+            border: 1px solid #28a745;
             border-radius: 6px;        
             color: #FFFFFF;      
-            font-size: 0.8rem;      
+            font-size: 22pt; 
             border-radius: 8px;
             order: 2;
             padding: 10px;
         }
         
-        button:hover {
-            background-color: #30363d;
+        button:hover {            
             cursor: pointer;
         }
         a {
@@ -85,7 +65,35 @@
             left: 0;
             z-index: -1;
             color: #000000;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
         }
+        @keyframes gradient {
+            0% {
+                color: #ff79c6;
+            }
+            25% {
+                color: #bd93f9;
+            }
+            50% {
+                color: #8be9fd;
+            }
+            75% {
+                color: #50fa7b;
+            }
+            100% {
+                color: #ff79c6;
+            }
+        }
+
+        #wow div {
+            animation: gradient 5s ease-in-out infinite;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
     </style>
 </head>
 
@@ -94,7 +102,7 @@
     <div id="container">
         <div id="wow"></div>        
         <p id="language">👾</p>
-        <button onclick="selectLanguage()">escolher linguagem de programação</button>        
+        <button onclick="selectLanguage()">escolher uma linguagem de programação</button>        
     </div>    
     
     <script>
@@ -110,12 +118,16 @@
             "Erlang", "SAS", "F#", "Nim", "APL", "Crystal", "Raku", "Flow"
         ];        
 
+        let isSelected = false;
+
         function selectLanguage() {
             const randomIndex = Math.floor(Math.random() * languages.length);
             document.getElementById("language").innerText = languages[randomIndex];
+            isSelected = true;            
+            renderLanguages();
         }
 
-        let isHovering = false;
+        let isHovering = false;        
 
         document.querySelector('button').addEventListener('mouseover', () => {
             isHovering = true;
@@ -143,20 +155,30 @@
         function renderLanguages() {
             const container = document.getElementById('wow');
             container.innerHTML = '';
+
+            if (isSelected) return;
+
             textArray.sort(() => Math.random() - 0.5);
-            let fillerText = '';
-            textArray.forEach(language => {
-                fillerText += language + ' ';
-            });
-            while (fillerText.length < 5000) {
-                fillerText += fillerText;
-            }
-            container.innerText = fillerText;
-            container.style.fontSize = '0.5rem';
-            container.style.opacity = '0.5';
-            container.style.lineHeight = '1';
-            container.style.letterSpacing = '0';
-            container.style.wordSpacing = '0';
+
+            let totalLength = 0;
+            while (totalLength < 5000) {
+                textArray.forEach(language => {
+                    const div = document.createElement('div');
+                    div.style.fontSize = '50pt';
+                    div.style.opacity = '0.05';
+                    div.style.lineHeight = '1';
+                    div.style.letterSpacing = '0';
+                    div.style.wordSpacing = '0';
+                    div.innerText = language;
+                    div.style.display = 'inline';
+                    container.appendChild(div);
+                    const space = document.createElement('div');
+                    space.innerText = ' ';
+                    space.style.display = 'inline';
+                    container.appendChild(space);
+                });
+                totalLength = container.innerText.length;
+            }            
         }
 
         document.getElementById('language').addEventListener('click', () => {
