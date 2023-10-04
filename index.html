@@ -2,11 +2,10 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>ESCOLHENDO a MELHOR LINGUAGEM de PROGRAMAÇÃO</title>
-
-    <style>        
+    <style>
         body {
             overflow: hidden;
             background-color: #0D1117;
@@ -14,7 +13,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
             margin: 0;
             padding: 0;
-            font-size: 48pt;            
+            font-size: 48pt;
             word-wrap: break-word;
             display: flex;
             flex-direction: column;
@@ -22,21 +21,22 @@
             justify-content: center;
             height: 100vh;
         }
-        
+
         button {
             background-color: #28a745;
             border: 1px solid #28a745;
-            border-radius: 6px;        
-            color: #FFFFFF;      
-            font-size: 22pt; 
+            border-radius: 6px;
+            color: #FFFFFF;
+            font-size: 22pt;
             border-radius: 8px;
             order: 2;
             padding: 10px;
         }
-        
-        button:hover {            
+
+        button:hover {
             cursor: pointer;
         }
+
         a {
             color: #1f6feb;
             text-decoration: none;
@@ -69,19 +69,24 @@
             align-items: center;
             text-align: justify;
         }
+
         @keyframes gradient {
             0% {
                 color: #ff79c6;
             }
+
             25% {
                 color: #bd93f9;
             }
+
             50% {
                 color: #8be9fd;
             }
+
             75% {
                 color: #50fa7b;
             }
+
             100% {
                 color: #ff79c6;
             }
@@ -94,17 +99,84 @@
             color: transparent;
         }
 
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.9;
+            }
+
+            70% {
+                transform: scale(0.95);
+                opacity: 0.9;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
+    <script>
+        function showClickMeImage() {
+            const clickmeImage = document.getElementById("clickme");
+            clickmeImage.style.display = "block";
+            clickmeImage.style.animation = "bounceIn 0.3s";
+        }
+
+        function redirectToLucasMontano() {
+            const links = [
+                '/watch?v=ZbhcFLqt5wI',
+                '/watch?v=jouOvuRkOjY',
+                '/watch?v=yz3BcL5oQ70',
+                '/watch?v=EQf1UtuDi9o',
+                '/watch?v=A1NjONzcHrY',
+                '/watch?v=eJZV5W4_gkY',
+                '/watch?v=g45qrU297cg',
+                '/watch?v=NttrF2T4BSA',
+                '/watch?v=V9B6FMRs0ck',
+                '/watch?v=wRzvI8xWC9s',
+                '/watch?v=G5EPi8DQahI',
+                '/watch?v=fiFcC54aMaA',
+                '/watch?v=KXCNH9Wj6Fg',
+                '/watch?v=ijnJg0Za2UY',
+                '/watch?v=JB5trigCSVE',
+                '/watch?v=ANeEikfX5go',
+                '/watch?v=BO7QW5-etZ4',
+                '/watch?v=OILOgpjsY-Q',
+                '/watch?v=_tAy-NNkHuo',
+                '/watch?v=Is0GVsNfDHo',
+                '/watch?v=Oz21sD9nrHk',
+                '/watch?v=fyXfFnHnl1Y',
+                '/watch?v=odMkcZ_t4PY',
+                '/watch?v=teU_RL7QOT4',
+                '/watch?v=NnekO9pdJaw',
+                '/watch?v=5jPam2LV0ME',
+                '/watch?v=e4x4IITQvak',
+                '/watch?v=arG8jkRHwsY',
+                '/watch?v=Y2WfzFozf8M',
+                '/watch?v=15fBdpMWPrE'
+            ];
+
+            const randomIndex = Math.floor(Math.random() * links.length);
+            const randomLink = links[randomIndex];
+            window.location.href = "https://www.youtube.com" + randomLink;
+        }
+    </script>
 </head>
 
 <body>
-    
+
     <div id="container">
-        <div id="wow"></div>        
+        <div id="wow"></div>
         <p id="language">👾</p>
-        <button onclick="selectLanguage()">escolher uma linguagem de programação</button>        
-    </div>    
-    
+        <button onclick="selectLanguage()">escolher uma linguagem de programação</button>
+    </div>
+
     <script>
         // wow tu eh muito hacker!
         const languages = [
@@ -116,18 +188,19 @@
             "Fortran", "Objective-C", "Scala", "Elixir", "Zig", "Prolog",
             "Solidity", "Cobol", "Ada", "Clojure", "OCaml", "Apex",
             "Erlang", "SAS", "F#", "Nim", "APL", "Crystal", "Raku", "Flow"
-        ];        
+        ];
 
         let isSelected = false;
 
         function selectLanguage() {
+            showClickMeImage();
             const randomIndex = Math.floor(Math.random() * languages.length);
             document.getElementById("language").innerText = languages[randomIndex];
-            isSelected = true;            
+            isSelected = true;
             renderLanguages();
         }
 
-        let isHovering = false;        
+        let isHovering = false;
 
         document.querySelector('button').addEventListener('mouseover', () => {
             isHovering = true;
@@ -178,12 +251,21 @@
                     container.appendChild(space);
                 });
                 totalLength = container.innerText.length;
-            }            
+            }
         }
 
         document.getElementById('language').addEventListener('click', () => {
             window.open('https://www.youtube.com/lucasmontano', '_blank');
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const clickmeImage = document.getElementById("clickme");
+            clickmeImage.addEventListener("click", redirectToLucasMontano);
+        });
     </script>
+
+    <img id="clickme" src="clickme.png"
+        style="display:none;cursor:pointer;position:fixed;bottom:0px;right:0px;width:200px;height:200px;z-index:999;" />
 </body>
+
 </html>
