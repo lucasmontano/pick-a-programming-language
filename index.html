@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180x180.png">
 
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lcp7l8pAAAAADFTgvVMSVEdevRCl_Om76WUITDw"></script>
 
     <!-- Basic SEO -->
     <meta name="description" content="Escolha a melhor linguagem de programação para aprender.">
@@ -213,11 +214,15 @@
         let isSelected = false;
 
         function selectLanguage() {
-            showClickMeImage();
-            const randomIndex = Math.floor(Math.random() * languages.length);
-            document.getElementById("language").innerText = languages[randomIndex];
-            isSelected = true;
-            renderLanguages();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lcp7l8pAAAAADFTgvVMSVEdevRCl_Om76WUITDw', {action: 'submit'}).then(function(token) {
+                    showClickMeImage();
+                    const randomIndex = Math.floor(Math.random() * languages.length);
+                    document.getElementById("language").innerText = languages[randomIndex];
+                    isSelected = true;
+                    renderLanguages();
+                });
+            });            
         }
 
         let isHovering = false;
